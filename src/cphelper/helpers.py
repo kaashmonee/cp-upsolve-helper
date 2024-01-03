@@ -58,8 +58,12 @@ class Runner:
 
 
 def main():
-    r = Runner("something", [SEQ])
-    r.test_solution("", "")
+    """
+    r = Runner(...) 
+    def solution(arg1, arg2, arg3): pass # implementation omitted
+    expected_outputs = [...]
+    r.test_solution(solution, expected_outputs)
+    """
 
 
 if __name__ == "__main__":
