@@ -59,7 +59,7 @@ r.test_solution(solution, expected_output)
 
 ```
 
-output:
+output: note, passes the first case, fails on the others
 ```
 F
 ======================================================================
