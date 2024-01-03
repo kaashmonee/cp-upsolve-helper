@@ -59,3 +59,23 @@ r.test_solution(solution, expected_output)
 
 ```
 
+output:
+```
+F
+======================================================================
+FAIL: test_function (cphelper.helpers.Runner.test_solution.<locals>._.test_function)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/homebrew/anaconda3/lib/python3.11/site-packages/cphelper/helpers.py", line 67, in test_function
+    sself.assertEqual(result, expected)
+AssertionError: '0' != '4'
+- 0
++ 4
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+```
+
