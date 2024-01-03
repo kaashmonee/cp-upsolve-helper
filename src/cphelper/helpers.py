@@ -19,7 +19,7 @@ class Runner:
 
     def _read_input(self, input_str: str):
         lines = input_str.splitlines()
-        self.test_cases = []
+        test_cases = []
         cur_line_num = 1
         test_case = []
         while cur_line_num < len(lines):
@@ -42,6 +42,10 @@ class Runner:
 
                 cur_line += 1
 
+            test_cases.append(test_case)
+
+        return test_cases
+
     def test_solution(self, soln, expected_outputs):
         if len(expected_outputs) != len(self.test_cases):
             raise Exception(
@@ -54,7 +58,8 @@ class Runner:
 
 
 def main():
-    Runner("something", [SEQ])
+    r = Runner("something", [SEQ])
+    r.test_solution("", "")
 
 
 if __name__ == "__main__":
