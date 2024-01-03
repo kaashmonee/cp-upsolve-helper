@@ -64,6 +64,7 @@ def main():
     expected_outputs = [...]
     r.test_solution(solution, expected_outputs)
     """
+    pass
 
 
 if __name__ == "__main__":
