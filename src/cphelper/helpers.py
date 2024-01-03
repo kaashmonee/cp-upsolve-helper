@@ -1,3 +1,4 @@
+import uthelper.helpers as uthelper
 
 SEQ = "seq"
 MUL = "mul"
@@ -18,43 +19,52 @@ class Runner:
         self.test_cases = self._read_input(inp_str)
 
     def _read_input(self, input_str: str):
-        lines = input_str.splitlines()
+        lines = input_str.strip().splitlines()
         test_cases = []
         cur_line_num = 1
-        test_case = []
         while cur_line_num < len(lines):
+            test_case = []
             for inp_type in self.input_types:
                 cur_line = lines[cur_line_num]
                 if inp_type == SEQ:
                     ints_str = cur_line.strip().split()
                     ints = list(map(lambda s: int(s), ints_str))
-                    test_case.append(ints)
+                    test_case = ints
                 elif inp_type == INP:
-                    test_case.append(int(cur_line))
+                    test_case = [int(cur_line)]
                 elif inp_type == STRNG:
-                    test_case.append(cur_line.strip())
+                    test_case = cur_line.strip()
                 elif inp_type == MULF:
                     mulf_result = list(map(float, cur_line.strip().split()))
-                    test_case.append(mulf_result)
+                    test_case = mulf_result
                 elif inp_type == MUL:
-                    mul_result = map(int, cur_line.strip().split())
-                    test_case.append(mul_result)
+                    mul_result = list(map(int, cur_line.strip().split()))
+                    test_case = mul_result
 
-                cur_line += 1
+                cur_line_num += 1
 
             test_cases.append(test_case)
 
         return test_cases
 
     def test_solution(self, soln, expected_outputs):
-        if len(expected_outputs) != len(self.test_cases):
+        self.expected_outputs = expected_outputs.strip().splitlines()
+        print("self.test_cases:", self.test_cases)
+        if len(self.expected_outputs) != len(self.test_cases):
             raise Exception(
-                "expected number of outputs does not match number of test cases")
+                f"expected number of outputs: {len(expected_outputs)} does not match number of test cases: {len(self.test_cases)}")
 
-        for i in range(len(expected_outputs)):
-            test_case = self.test_cases[i]
-            result = soln(*test_case)
-            print(result)
+        import unittest
+
+        @uthelper.run
+        class _(unittest.TestCase):
+            def test_function(sself):
+                for i in range(len(self.expected_outputs)):
+                    test_case = self.test_cases[i]
+                    print("test_case:", test_case)
+                    result = str(soln(*test_case))
+                    expected = self.expected_outputs[i]
+                    sself.assertEqual(result, expected)
 
 
 def main():
