@@ -1,8 +1,16 @@
 # cp-upsolve-helper
 
+https://pypi.org/project/cp-upsolve-helper/0.0.1/
+
 ## Usage
+if on local
 ```bash
 pip install .
+```
+
+from pypi
+```bash
+pip install cp-upsolve-helper==0.0.1
 ```
 
 ```python
