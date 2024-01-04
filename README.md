@@ -1,6 +1,6 @@
 # cp-upsolve-helper
 
-https://pypi.org/project/cp-upsolve-helper/0.0.1/
+https://pypi.org/project/cp-upsolve-helper/0.0.2/
 
 ## Usage
 if on local
@@ -10,7 +10,7 @@ pip install .
 
 from pypi
 ```bash
-pip install cp-upsolve-helper==0.0.1
+pip install cp-upsolve-helper==0.0.2
 ```
 
 ```python
