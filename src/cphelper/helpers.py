@@ -34,7 +34,7 @@ class Runner:
                     test_case.append(int(cur_line))
                 elif inp_type == STRNG:
                     stripped: str = cur_line.strip()
-                    test_case.append(stripped)
+                    test_case.append(stripped)  # type: ignore
                 elif inp_type == MULF:
                     mulf_result = list(map(float, cur_line.strip().split()))
                     test_case = mulf_result
