@@ -23,17 +23,18 @@ class Runner:
         test_cases = []
         cur_line_num = 1
         while cur_line_num < len(lines):
-            test_case = []
+            test_case: list = []
             for inp_type in self.input_types:
-                cur_line = lines[cur_line_num]
+                cur_line: str = lines[cur_line_num]
                 if inp_type == SEQ:
                     ints_str = cur_line.strip().split()
                     ints = list(map(lambda s: int(s), ints_str))
                     test_case = ints
                 elif inp_type == INP:
-                    test_case = [int(cur_line)]
+                    test_case.append(int(cur_line))
                 elif inp_type == STRNG:
-                    test_case = cur_line.strip()
+                    stripped: str = cur_line.strip()
+                    test_case.append(stripped)
                 elif inp_type == MULF:
                     mulf_result = list(map(float, cur_line.strip().split()))
                     test_case = mulf_result
@@ -49,7 +50,6 @@ class Runner:
 
     def test_solution(self, soln, expected_outputs):
         self.expected_outputs = expected_outputs.strip().splitlines()
-        print("self.test_cases:", self.test_cases)
         if len(self.expected_outputs) != len(self.test_cases):
             raise Exception(
                 f"expected number of outputs: {len(expected_outputs)} does not match number of test cases: {len(self.test_cases)}")
@@ -61,7 +61,6 @@ class Runner:
             def test_function(sself):
                 for i in range(len(self.expected_outputs)):
                     test_case = self.test_cases[i]
-                    print("test_case:", test_case)
                     result = str(soln(*test_case))
                     expected = self.expected_outputs[i]
                     sself.assertEqual(result, expected)
