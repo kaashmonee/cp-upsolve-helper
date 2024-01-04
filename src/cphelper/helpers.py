@@ -29,7 +29,7 @@ class Runner:
                 if inp_type == SEQ:
                     ints_str = cur_line.strip().split()
                     ints = list(map(lambda s: int(s), ints_str))
-                    test_case = ints
+                    test_case.append(ints)  # type: ignore
                 elif inp_type == INP:
                     test_case.append(int(cur_line))
                 elif inp_type == STRNG:
